@@ -1,0 +1,21 @@
+{
+  "version": "survey-pending-v1",
+  "status": "survey_pending",
+  "human_labels": 0,
+  "target_human_labels": 3600,
+  "unique_messages": 450,
+  "temperature": 1.0,
+  "class_bias": {
+    "Bilgilendirme": 1.0,
+    "Eleştiri": 1.0,
+    "İtiraz": 1.0,
+    "Mizah": 1.0,
+    "Tavsiye": 1.0,
+    "Destek / Övgü": 1.0,
+    "Soru": 1.0
+  },
+  "uncertainty_high": 62,
+  "drift_margin": 12,
+  "drift_min_dominant": 45,
+  "note": "Anket sonuçları gelene kadar kimlik kalibrasyonu kullanılır. İnsan algısı verisinden öğrenilen sıcaklık, sınıf önyargıları ve karar eşikleri daha sonra bu dosyaya yazılır."
+}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NİYET — Sosyal İletişim Prototipi</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#ffffff; --text:#18202a; --muted:#6b7280; --line:#e5e7eb;
+  --brand:#1f4f46; --brand2:#2f6b5e; --soft:#eaf4f1; --warn:#a95c18; --danger:#a33b3b;
+  --shadow:0 8px 30px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+.sidebar{background:#15201e;color:white;padding:24px 16px;position:sticky;top:0;height:100vh}
+.logo{font-size:26px;font-weight:800;letter-spacing:.8px;margin-bottom:6px}
+.logo-sub{font-size:12px;color:#b8c7c3;margin-bottom:28px}
+.nav button{width:100%;text-align:left;border:0;background:transparent;color:#d6dfdd;padding:13px 14px;border-radius:12px;margin:4px 0}
+.nav button.active,.nav button:hover{background:#23312e;color:white}
+.sidebar .mini{position:absolute;bottom:20px;left:16px;right:16px;background:#21302d;padding:12px;border-radius:12px;font-size:12px;color:#c9d5d2}
+.main{padding:24px;max-width:1260px;width:100%;margin:0 auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.topbar h1{margin:0;font-size:24px}
+.userchip{display:flex;gap:10px;align-items:center;background:white;padding:8px 12px;border-radius:999px;box-shadow:var(--shadow)}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;background:#dfe8e6;color:#24483f}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.post{padding:18px;margin-bottom:16px}
+.post-head{display:flex;align-items:center;gap:10px}
+.post-head .meta{font-size:13px;color:var(--muted)}
+.post-text{font-size:16px;line-height:1.55;margin:14px 0}
+.post-img{width:100%;max-height:340px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.actions{display:flex;gap:10px;margin-top:12px}
+.action{border:1px solid var(--line);background:white;padding:8px 10px;border-radius:10px;color:#475569}
+.comments{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.comment{display:flex;gap:10px;padding:10px 0}
+.comment-bubble{background:#f7f8fa;padding:10px 12px;border-radius:12px;flex:1}
+.comment-bubble b{font-size:14px}
+.comment-bubble p{margin:4px 0 0;line-height:1.42}
+.comment-input{display:flex;gap:8px;margin-top:10px}
+.comment-input input{flex:1;border:1px solid var(--line);padding:10px 12px;border-radius:12px}
+.primary{border:0;background:var(--brand);color:white;padding:10px 14px;border-radius:12px;font-weight:700}
+.secondary{border:1px solid var(--line);background:white;padding:10px 14px;border-radius:12px}
+.heat{padding:16px}
+.heat-row{display:flex;justify-content:space-between;align-items:center}
+.heat-value{font-size:30px;font-weight:800}
+.bar{height:10px;background:#edf0f2;border-radius:999px;overflow:hidden;margin-top:10px}
+.bar > span{display:block;height:100%;background:linear-gradient(90deg,#5a8f7d,#d48a3b,#b84b4b);width:0%;transition:.4s}
+.legend{font-size:12px;color:var(--muted);margin-top:8px}
+.botlist{padding:16px;margin-top:16px}
+.botrow{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line)}
+.botrow:last-child{border-bottom:0}
+.badge{font-size:11px;padding:4px 8px;background:var(--soft);color:var(--brand);border-radius:999px}
+.hidden{display:none!important}
+.chat-layout{display:grid;grid-template-columns:260px 1fr;gap:18px}
+.chat-list{padding:10px}
+.chat-person{padding:12px;border-radius:12px;margin:4px 0}
+.chat-person.active,.chat-person:hover{background:var(--soft)}
+.chatbox{display:flex;flex-direction:column;height:650px}
+.messages{flex:1;padding:18px;overflow:auto}
+.msg{max-width:70%;padding:10px 12px;border-radius:14px;margin:8px 0;line-height:1.4}
+.msg.bot{background:#f2f4f6}
+.msg.me{background:var(--brand);color:white;margin-left:auto}
+.chat-send{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line)}
+.chat-send input{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px}
+.profile-cover{height:150px;background:linear-gradient(120deg,#1f4f46,#8eb4aa);border-radius:18px 18px 0 0}
+.profile-body{padding:0 20px 20px}
+.profile-avatar{width:88px;height:88px;border-radius:50%;background:#dfe8e6;border:5px solid white;margin-top:-44px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#24483f}
+.profile-stats{display:flex;gap:24px;color:var(--muted);font-size:13px;margin-top:10px}
+.composer{padding:18px;margin:18px 0}
+.composer textarea{width:100%;min-height:100px;border:1px solid var(--line);border-radius:14px;padding:12px;resize:vertical}
+.composer-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.filelabel{border:1px solid var(--line);padding:9px 12px;border-radius:10px;background:white}
+.preview{max-width:220px;max-height:160px;border-radius:12px;margin-top:10px;border:1px solid var(--line)}
+.score-wrap{display:grid;grid-template-columns:300px 1fr;gap:18px}
+.score-hero{padding:22px;text-align:center}
+.bigscore{font-size:60px;font-weight:900;color:var(--brand)}
+.score-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.score-card{padding:16px}
+.score-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.info{border:0;background:#edf3f1;color:var(--brand);width:26px;height:26px;border-radius:50%;font-weight:800}
+.subscore{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px dashed var(--line);font-size:13px}
+.delta.up{color:#2f7a56}.delta.down{color:#a33b3b}
+.improve{margin-top:10px;border:0;background:#eef5f3;color:var(--brand);padding:8px 10px;border-radius:10px;font-weight:700}
+.dev-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.learning{padding:18px}
+.video{height:210px;border-radius:16px;background:linear-gradient(135deg,#23312e,#58756e);display:flex;align-items:center;justify-content:center;color:white;text-align:center;padding:20px}
+.quiz{padding:18px}
+.quiz label{display:block;padding:10px;border:1px solid var(--line);border-radius:10px;margin:8px 0}
+.modal{position:fixed;inset:0;background:rgba(12,18,17,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.modal-card{background:white;max-width:760px;width:100%;border-radius:20px;padding:20px;max-height:90vh;overflow:auto}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{background:#f7f9f8;padding:12px;border-radius:12px}
+.metric strong{display:block;font-size:22px}
+.spectrum{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.spectrum .s{padding:10px;border:1px solid var(--line);border-radius:10px;text-align:center;font-size:12px}
+.note{background:#fff8e8;border:1px solid #f1ddb0;padding:12px;border-radius:12px;margin:12px 0}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+.toast{position:fixed;right:24px;bottom:24px;background:#15201e;color:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);z-index:100}
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto}.sidebar .mini{display:none}
+  .grid,.score-wrap,.dev-grid,.chat-layout{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr}.main{padding:14px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">NİYET</div>
+    <div class="logo-sub">Sosyal iletişim prototipi</div>
+    <div class="nav">
+      <button class="active" data-tab="feed">Akış</button>
+      <button data-tab="chat">Sohbet</button>
+      <button data-tab="profile">Kullanıcı Profili</button>
+      <button data-tab="score">NİYET Skoru</button>
+      <button data-tab="growth">Gelişim</button>
+    </div>
+    <div class="mini">Bu sürüm ön yüz simülasyonudur. Botlar ve skorlar demo amaçlı dinamik olarak üretilir.</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h1 id="pageTitle">Akış</h1>
+      <div class="userchip"><div class="avatar">K</div><div><b>Kullanıcı</b><div style="font-size:12px;color:#6b7280">NİYET 78</div></div></div>
+    </div>
+
+    <section id="feed" class="tab">
+      <div class="grid">
+        <div id="feedPosts"></div>
+        <div>
+          <div class="card heat">
+            <div class="heat-row"><div><b>Seçili tartışma ısısı</b><div class="legend">Yalnızca yorum zincirine aittir</div></div><div class="heat-value" id="heatValue">42</div></div>
+            <div class="bar"><span id="heatBar" style="width:42%"></span></div>
+          </div>
+          <div class="card botlist">
+            <b>Aktif bot kullanıcılar</b>
+            <div id="botList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="chat" class="tab hidden">
+      <div class="chat-layout">
+        <div class="card chat-list" id="chatList"></div>
+        <div class="card chatbox">
+          <div class="messages" id="messages"></div>
+          <div class="chat-send">
+            <input id="chatInput" placeholder="Mesaj yaz..." />
+            <button class="primary" onclick="sendChat()">Gönder</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="tab hidden">
+      <div class="card">
+        <div class="profile-cover"></div>
+        <div class="profile-body">
+          <div class="profile-avatar">K</div>
+          <h2 style="margin-bottom:4px">Kullanıcı</h2>
+          <div style="color:#6b7280">Fikirler, fotoğraflar ve tartışmalar.</div>
+          <div class="profile-stats"><span><b>12</b> paylaşım</span><span><b>184</b> etkileşim</span><span><b>78</b> NİYET</span></div>
+        </div>
+      </div>
+
+      <div class="card composer">
+        <h3>Yeni paylaşım</h3>
+        <textarea id="postText" placeholder="Ne düşünüyorsun?"></textarea>
+        <img id="imgPreview" class="preview hidden" alt="önizleme" />
+        <div class="composer-row">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <label class="filelabel">Fotoğraf ekle <input id="imgInput" type="file" accept="image/*" hidden></label>
+            <select id="intentSelect" class="secondary">
+              <option value="Bilgilendirme">Niyet: Bilgilendirme</option>
+              <option value="Eleştiri">Niyet: Eleştiri</option>
+              <option value="İtiraz">Niyet: İtiraz</option>
+              <option value="Mizah">Niyet: Mizah</option>
+              <option value="Tavsiye">Niyet: Tavsiye</option>
+              <option value="Destek">Niyet: Destek</option>
+              <option value="Soru">Niyet: Soru</option>
+            </select>
+          </div>
+          <button class="primary" onclick="openAnalysis()">NİYET ile analiz et</button>
+        </div>
+      </div>
+
+      <div id="profilePosts"></div>
+    </section>
+
+    <section id="score" class="tab hidden">
+      <div class="score-wrap">
+        <div class="card score-hero">
+          <div style="color:#6b7280">Genel NİYET Skoru</div>
+          <div class="bigscore" id="overallScore">78</div>
+          <div><span class="delta up">▲ +3</span> son 7 gün</div>
+          <div class="bar"><span style="width:78%"></span></div>
+          <p style="font-size:13px;color:#6b7280;line-height:1.5">Skor; iletişim davranışı ve sınırlı gelişim katkısından oluşur. Alt başlıklar her alanın nasıl hesaplandığını gösterir.</p>
+        </div>
+        <div class="score-grid" id="scoreGrid"></div>
+      </div>
+    </section>
+
+    <section id="growth" class="tab hidden">
+      <div class="dev-grid">
+        <div class="card learning">
+          <div class="badge">Önerilen mikro öğrenme</div>
+          <h2>Fikre karşı çık, kişiye değil</h2>
+          <p style="color:#6b7280">Gerilim yönetimi ve saygı skorundaki son düşüşe göre önerildi.</p>
+          <div class="video">
+            <div>
+              <div style="font-size:38px">▶</div>
+              <b>52 saniyelik örnek video</b>
+              <div style="font-size:13px;margin-top:8px;color:#d9e5e1">“Kişisel eleştiriyi görüş eleştirisine dönüştürme”</div>
+            </div>
+          </div>
+          <button class="primary" style="margin-top:12px" onclick="watchVideo()">Videoyu tamamla</button>
+        </div>
+        <div class="card quiz">
+          <h3>Mini quiz</h3>
+          <p>Hangisi daha yapıcı bir yanıttır?</p>
+          <label><input type="radio" name="q" value="a"> “Sen zaten bu konudan anlamıyorsun.”</label>
+          <label><input type="radio" name="q" value="b"> “Bu görüşün dayandığı verilerin yetersiz olduğunu düşünüyorum.”</label>
+          <label><input type="radio" name="q" value="c"> “Herkes yanlış, ben haklıyım.”</label>
+          <button class="primary" onclick="submitQuiz()">Quiz'i tamamla</button>
+          <div id="quizResult" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="analysisModal" class="modal hidden">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div><div class="badge">Paylaşım öncesi analiz</div><h2 style="margin:8px 0">NİYET Analizi</h2></div>
+      <button class="secondary" onclick="closeAnalysis()">Kapat</button>
+    </div>
+    <div class="analysis-grid">
+      <div class="metric"><span>Niyet–Algı Uyumu</span><strong id="intentMatch">74/100</strong></div>
+      <div class="metric"><span>Yanlış Anlaşılma Riski</span><strong id="misRisk">31%</strong></div>
+      <div class="metric"><span>Mevcut Tartışma Isısı</span><strong id="currentHeat">46</strong></div>
+      <div class="metric"><span>Tahmini Isı</span><strong id="futureHeat">54 ↑</strong></div>
+    </div>
+    <h3>Algı Spektrumu</h3>
+    <div class="spectrum" id="spectrum"></div>
+    <div class="note" id="analysisNote"></div>
+    <div class="metric">
+      <b>Niyet Kayması</b>
+      <div id="driftText" style="margin-top:6px;color:#6b7280">Yok</div>
+    </div>
+    <div class="modal-actions">
+      <button class="secondary" onclick="closeAnalysis()">Düzenle</button>
+      <button class="primary" onclick="publishPost()">Yine de paylaş</button>
+    </div>
+  </div>
+</div>
+
+<div id="infoModal" class="modal hidden">
+  <div class="modal-card" style="max-width:560px">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3 id="infoTitle">Bilgi</h3>
+      <button class="secondary" onclick="closeInfo()">Kapat</button>
+    </div>
+    <p id="infoText" style="line-height:1.6;color:#475569"></p>
+    <button class="improve" onclick="goImprove()">Geliştir</button>
+  </div>
+</div>
+
+<script>
+const bots = [
+  {name:"Sıla Demir", initial:"S", style:"sakin ve yapıcı", score:90, color:"#dceee7"},
+  {name:"Ahmet Yılmaz", initial:"A", style:"net ve tartışmacı", score:72, color:"#e7e4db"},
+  {name:"Mert Kaya", initial:"M", style:"ironik ve sivri", score:58, color:"#efe0dc"},
+  {name:"Elif Aydın", initial:"E", style:"analitik ve veri odaklı", score:86, color:"#e3e7ef"},
+  {name:"Can Aras", initial:"C", style:"duygusal ve kısa", score:68, color:"#eee7d8"},
+  {name:"Zeynep Koç", initial:"Z", style:"karşı görüşlü ama uzlaştırıcı", score:82, color:"#e7deef"}
+];
+const basePosts = [
+ {id:1, author:"Elif Aydın", initial:"E", text:"Yapay zekânın eğitimde yasaklanması yerine, nasıl ve hangi sınırlar içinde kullanılacağının öğretilmesi gerektiğini düşünüyorum.", comments:[
+  ["Sıla Demir","Doğru kullanım öğretilirse araştırma ve sorgulama becerisini de destekleyebilir."],
+  ["Mert Kaya","Tabii, artık düşünmeye hiç gerek yok zaten :)"]
+ ], heat:48},
+ {id:2, author:"Ahmet Yılmaz", initial:"A", text:"Şehir merkezlerinde araç trafiğini azaltmadan hava kalitesini ciddi biçimde iyileştirmek zor görünüyor.", comments:[
+  ["Can Aras","Toplu taşıma bu haldeyken insanlara arabayı bırak demek kolay."],
+  ["Zeynep Koç","Belki önce alternatifleri güçlendirip sonra kademeli azaltmak daha gerçekçi olur."]
+ ], heat:36},
+ {id:3, author:"Sıla Demir", initial:"S", text:"Sosyal medyada farklı görüşlerle karşılaşmak, aynı fikirleri tekrar tekrar görmekten daha faydalı olabilir.", comments:[
+  ["Ahmet Yılmaz","Katılıyorum ama algoritmaların bunu teşvik ettiğini pek düşünmüyorum."],
+  ["Mert Kaya","İnsanlar zaten karşı görüş görünce blokluyor :)"]
+ ], heat:41}
+];
+let selectedPostId=1, userPosts=[], activeChat=0, watched=false, quizDone=false, developmentBonus=0;
+
+const scoreData = [
+ {title:"Saygı", value:87, info:"Saygı skoru; kişisel saldırıdan kaçınma, karşı görüşe yaklaşım, küçümseyici dil ve hedef gösterme gibi iletişim davranışlarını değerlendirir. Skoru artırmak için kişiyi değil fikri eleştirin, genelleyici ifadelerden kaçının, görüşünüzü gerekçelendirin ve tartışmanın tonu sertleşse bile karşı tarafın dilini taklit etmeyin.", subs:[
+  ["Kişisel saldırıdan kaçınma",92,"up","+4"],["Hakaret/küfürden kaçınma",98,"up","+1"],["Küçümseyici dilden kaçınma",81,"down","-3"],["Karşı görüşe saygı",76,"down","-2"],["Hedef göstermeden kaçınma",90,"up","+2"]]},
+ {title:"Yapıcılık", value:74, info:"Yapıcılık skoru, paylaşımlarınızın tartışmaya ne ölçüde bilgi, gerekçe veya çözüm kattığını gösterir. Skoru geliştirmek için yalnızca karşı çıkmak yerine nedenlerinizi açıklayın, mümkün olduğunda alternatif önerin, konu dışına çıkmayın ve tartışmayı ilerletecek sorular ya da doğrulanabilir bilgiler kullanmaya çalışın.", subs:[
+  ["Gerekçelendirme",78,"up","+2"],["Çözüm/alternatif sunma",65,"down","-4"],["Konuya bağlılık",86,"up","+5"],["Bilgi/argüman katkısı",72,"up","+1"],["Tartışmayı ilerletme",68,"down","-2"]]},
+ {title:"Tutarlılık", value:82, info:"Tutarlılık skoru, farklı paylaşımlarınızdaki iletişim ilkelerinizin ve argümanlarınızın birbiriyle ne kadar uyumlu olduğunu değerlendirir. Görüş değiştirmek puanı düşürmez. Skoru yükseltmek için fikir değişikliklerinizi gerekçelendirin, açık çelişkileri açıklayın ve savunduğunuz iletişim ilkelerini farklı görüşlere karşı da koruyun.", subs:[
+  ["Aynı tartışmada söylem tutarlılığı",85,"up","+2"],["Önceki ifadelerle uyum",79,"up","+1"],["İletişim ilkelerine uyum",81,"down","-1"],["Görüş değişimini gerekçelendirme",84,"up","+3"]]},
+ {title:"Gerilim Yönetimi", value:65, info:"Gerilim Yönetimi skoru, tartışma sertleştiğinde iletişim biçiminizi ne kadar koruyabildiğinizi ölçer. Skoru artırmak için provokatif mesajlara hemen tepki vermeyin, kişisel ifadeleri konuya geri yönlendirin, karşı tarafın tonunu taklit etmeyin ve anlaşmazlığı büyütmek yerine görüşünüzü sakin biçimde gerekçelendirin.", subs:[
+  ["Provokasyon direnci",58,"down","-7"],["Gerilimi artırmama",63,"down","-3"],["Kişiselleştirmeme",71,"up","+4"],["Sertleşmede tonu koruma",59,"down","-5"],["Yumuşatma/geri çekilme",74,"up","+2"]]},
+ {title:"İletişim Açıklığı", value:79, info:"İletişim Açıklığı skoru, vermek istediğiniz mesaj ile okuyucunun algılayabileceği anlam arasındaki uyumu değerlendirir. Skoru artırmak için belirsiz ifadeleri azaltın, ironiyi bağlamın anlaşılabileceği şekilde kullanın, aşırı genellemelerden kaçının ve özellikle hassas konularda asıl niyetinizi daha açık ifade edin.", subs:[
+  ["İfade açıklığı",88,"up","+3"],["Belirsizlikten kaçınma",78,"up","+2"],["Niyet–algı uyumu",74,"down","-3"],["İroni/alay uygunluğu",69,"down","-2"],["Emoji–metin uyumu",82,"up","+4"]]}
+];
+
+function avatarHtml(initial,color="#dfe8e6"){return `<div class="avatar" style="background:${color}">${initial}</div>`}
+function renderBots(){
+ document.getElementById("botList").innerHTML=bots.map(b=>`<div class="botrow"><div style="display:flex;gap:8px;align-items:center">${avatarHtml(b.initial,b.color)}<div><b style="font-size:13px">${b.name}</b><div style="font-size:11px;color:#6b7280">${b.style}</div></div></div><span class="badge">${b.score}</span></div>`).join("");
+}
+function renderFeed(){
+ const all=[...basePosts,...userPosts];
+ document.getElementById("feedPosts").innerHTML=all.map(p=>postHtml(p)).join("");
+ updateSelectedHeat();
+}
+function postHtml(p){
+ return `<div class="card post" onclick="selectPost(${p.id})">
+   <div class="post-head">${avatarHtml(p.initial)}<div><b>${p.author}</b><div class="meta">şimdi · herkese açık</div></div></div>
+   <div class="post-text">${escapeHtml(p.text)}</div>
+   ${p.image?`<img src="${p.image}" class="post-img">`:""}
+   <div class="actions"><button class="action">Beğen</button><button class="action">Yorumlar (${p.comments.length})</button><button class="action">Paylaş</button></div>
+   <div class="comments">
+     <div class="heat-row"><b>🔥 Tartışma Isısı</b><span><b>${p.heat}/100</b></span></div>
+     <div class="bar"><span style="width:${p.heat}%"></span></div>
+     ${p.comments.map(c=>commentHtml(c)).join("")}
+     <div class="comment-input"><input id="comment-${p.id}" placeholder="Yanıt yaz..."><button class="primary" onclick="event.stopPropagation();addComment(${p.id})">Yanıtla</button></div>
+   </div>
+ </div>`;
+}
+function commentHtml(c){
+ const b=bots.find(x=>x.name===c[0]); const initial=b?b.initial:"K";
+ return `<div class="comment">${avatarHtml(initial,b?b.color:"#dfe8e6")}<div class="comment-bubble"><b>${c[0]}</b><p>${escapeHtml(c[1])}</p></div></div>`
+}
+function selectPost(id){selectedPostId=id;updateSelectedHeat()}
+function updateSelectedHeat(){
+ const p=[...basePosts,...userPosts].find(x=>x.id===selectedPostId)||basePosts[0];
+ document.getElementById("heatValue").textContent=p.heat;
+ document.getElementById("heatBar").style.width=p.heat+"%";
+}
+function addComment(id){
+ const input=document.getElementById("comment-"+id); if(!input||!input.value.trim()) return;
+ const p=[...basePosts,...userPosts].find(x=>x.id===id); p.comments.push(["Kullanıcı",input.value.trim()]);
+ const analysis=analyzeText(input.value,p.heat); p.heat=Math.min(100,Math.round((p.heat*0.72)+(analysis.heatImpact*0.28)));
+ input.value=""; renderFeed(); renderProfilePosts(); toast("Yanıt eklendi. Gerilim davranışı skorlarını etkiledi.");
+}
+function renderProfilePosts(){document.getElementById("profilePosts").innerHTML=userPosts.length?userPosts.slice().reverse().map(postHtml).join(""):`<div class="card post"><b>Henüz paylaşım yok.</b><div class="meta" style="margin-top:6px">İlk paylaşımını yukarıdaki alandan oluştur.</div></div>`}
+function openAnalysis(){
+ const text=document.getElementById("postText").value.trim(); if(!text){toast("Önce bir paylaşım yaz.");return}
+ const current=basePosts[0].heat; const a=analyzeText(text,current);
+ document.getElementById("intentMatch").textContent=a.match+"/100";
+ document.getElementById("misRisk").textContent=a.risk+"%";
+ document.getElementById("currentHeat").textContent=current;
+ document.getElementById("futureHeat").textContent=a.futureHeat+(a.futureHeat>current?" ↑":"");
+ const specs=[["Yapıcı eleştiri",a.spec[0]],["Sert eleştiri",a.spec[1]],["Alay",a.spec[2]],["Kişisel saldırı",a.spec[3]]];
+ document.getElementById("spectrum").innerHTML=specs.map(s=>`<div class="s"><b>${s[1]}%</b><div>${s[0]}</div></div>`).join("");
+ document.getElementById("analysisNote").innerHTML=`<b>Öne çıkan bulgu:</b> ${a.note}`;
+ document.getElementById("driftText").textContent=a.drift;
+ document.getElementById("analysisModal").classList.remove("hidden");
+}
+function analyzeText(text,currentHeat){
+ const t=text.toLowerCase();
+ const aggressive=["salak","aptal","anlamıyorsun","boş","saçma","cahil","beceriksiz","sus","komik","zaten"];
+ const soft=["bence","düşünüyorum","katılmıyorum","veri","neden","öneri","belki","görüş","açıklama"];
+ const ag=aggressive.reduce((n,w)=>n+(t.includes(w)?1:0),0);
+ const sf=soft.reduce((n,w)=>n+(t.includes(w)?1:0),0);
+ const sarcasm=(t.includes(":)")||t.includes("😂")||t.includes("tabii")||t.includes("zaten"))?1:0;
+ let risk=Math.max(8,Math.min(92,22+ag*17+sarcasm*14-sf*4));
+ let match=Math.max(20,Math.min(96,84-ag*13-sarcasm*8+sf*3));
+ let impact=Math.max(20,Math.min(96,38+ag*18+sarcasm*12-sf*5));
+ let future=Math.min(100,Math.max(0,Math.round(currentHeat*0.72+impact*0.28)));
+ let pAttack=Math.min(65,8+ag*16), mock=Math.min(60,10+sarcasm*22+ag*5), hard=Math.min(65,20+ag*10), constructive=Math.max(5,100-pAttack-mock-hard);
+ let total=constructive+hard+mock+pAttack; const spec=[constructive,hard,mock,pAttack].map(x=>Math.round(x*100/total));
+ let drift=(ag>=2)?"Konu → Kişi yönünde kayma riski":"Belirgin niyet kayması yok";
+ let note=ag?`Kişiye yönelen veya küçümseyici algılanabilecek ifadeler bulundu. Bu dil, yorum zincirindeki tartışma ısısını yükseltebilir.`:`Dil büyük ölçüde konu odaklı. Yine de bağlam ve önceki paylaşımlar algıyı değiştirebilir.`;
+ return {risk,match,futureHeat:future,heatImpact:impact,spec,note,drift};
+}
+function publishPost(){
+ const text=document.getElementById("postText").value.trim(); if(!text)return;
+ const img=document.getElementById("imgPreview").dataset.src||"";
+ const id=Date.now();
+ const a=analyzeText(text,34);
+ userPosts.push({id,author:"Kullanıcı",initial:"K",text,image:img,comments:[],heat:Math.max(18,Math.min(75,a.futureHeat-6))});
+ document.getElementById("postText").value=""; document.getElementById("imgPreview").classList.add("hidden"); document.getElementById("imgPreview").dataset.src="";
+ closeAnalysis(); renderProfilePosts(); renderFeed(); toast("Paylaşım yayınlandı. Bot kullanıcılar birazdan etkileşime girecek.");
+ setTimeout(()=>botCommentOn(id),2200); setTimeout(()=>botCommentOn(id),5200); setTimeout(()=>botCommentOn(id),8500);
+}
+function botCommentOn(id){
+ const p=userPosts.find(x=>x.id===id); if(!p)return;
+ const candidates=[
+  ["Sıla Demir","Buradaki ana fikre katılıyorum ama farklı bir açıdan da bakılabilir."],
+  ["Ahmet Yılmaz","Bence bu görüş biraz daha somut gerekçeyle desteklenirse daha ikna edici olur."],
+  ["Mert Kaya","Bu kadar emin olmak güzel tabii :)"],
+  ["Elif Aydın","Bunu destekleyen bir veri veya örnek var mı?"],
+  ["Can Aras","Ben aynı fikirde değilim ama neden böyle düşündüğünü merak ettim."],
+  ["Zeynep Koç","Karşı görüşü de eklemek tartışmayı daha dengeli yapabilir."]
+ ];
+ const c=candidates[Math.floor(Math.random()*candidates.length)];
+ p.comments.push(c); const a=analyzeText(c[1],p.heat); p.heat=Math.round(p.heat*0.8+a.heatImpact*0.2);
+ renderFeed(); renderProfilePosts();
+}
+function setupImage(){
+ document.getElementById("imgInput").addEventListener("change",e=>{
+  const f=e.target.files[0]; if(!f)return; const r=new FileReader();
+  r.onload=()=>{const im=document.getElementById("imgPreview");im.src=r.result;im.dataset.src=r.result;im.classList.remove("hidden")};r.readAsDataURL(f)
+ });
+}
+function renderScores(){
+ document.getElementById("scoreGrid").innerHTML=scoreData.map((s,i)=>`<div class="card score-card">
+   <div class="score-title"><div><b>${s.title}</b> — <b>${s.value}/100</b></div><button class="info" onclick="openInfo(${i})">i</button></div>
+   <div class="bar"><span style="width:${s.value}%"></span></div>
+   <div style="margin-top:8px">${s.subs.map(x=>`<div class="subscore"><span>${x[0]}</span><span><b>${x[1]}</b> <span class="delta ${x[2]}">${x[2]==="up"?"▲":"▼"} ${x[3]}</span></span></div>`).join("")}</div>
+   <button class="improve" onclick="openInfo(${i})">Geliştir</button>
+ </div>`).join("");
+}
+function openInfo(i){document.getElementById("infoTitle").textContent=scoreData[i].title+" skoru";document.getElementById("infoText").textContent=scoreData[i].info;document.getElementById("infoModal").classList.remove("hidden")}
+function closeInfo(){document.getElementById("infoModal").classList.add("hidden")}
+function goImprove(){closeInfo();switchTab("growth")}
+function watchVideo(){watched=true;toast("Video tamamlandı. Quiz'i çözerek gelişim katkısını etkinleştir.");}
+function submitQuiz(){
+ const v=document.querySelector('input[name="q"]:checked')?.value;
+ if(!v){toast("Bir cevap seç.");return}
+ if(v==="b"&&watched){
+   quizDone=true; developmentBonus=3; document.getElementById("quizResult").innerHTML=`<b style="color:#2f7a56">Doğru. Gelişim katkısı +3 eklendi.</b><div style="font-size:12px;color:#6b7280;margin-top:6px">Bu bonus kalıcı davranış skorundan ayrıdır.</div>`;
+   document.getElementById("overallScore").textContent=81;
+   toast("Gelişim katkısı +3");
+ }else if(v==="b"){document.getElementById("quizResult").innerHTML=`Doğru cevap. Bonusu almak için videoyu da tamamla.`}
+ else{document.getElementById("quizResult").innerHTML=`<span style="color:#a33b3b">Bu yanıt daha kişiselleştirici. Tekrar dene.</span>`}
+}
+function renderChat(){
+ document.getElementById("chatList").innerHTML=bots.map((b,i)=>`<div class="chat-person ${i===activeChat?"active":""}" onclick="activeChat=${i};renderChat()"><div style="display:flex;gap:8px;align-items:center">${avatarHtml(b.initial,b.color)}<div><b>${b.name}</b><div style="font-size:11px;color:#6b7280">${b.style}</div></div></div></div>`).join("");
+ const b=bots[activeChat];
+ document.getElementById("messages").innerHTML=`<div class="msg bot"><b>${b.name}</b><br>Merhaba. Bugün hangi konuda konuşmak istersin?</div>`;
+}
+function sendChat(){
+ const inp=document.getElementById("chatInput"),v=inp.value.trim();if(!v)return;
+ const box=document.getElementById("messages");box.innerHTML+=`<div class="msg me">${escapeHtml(v)}</div>`;inp.value="";
+ const b=bots[activeChat]; setTimeout(()=>{box.innerHTML+=`<div class="msg bot"><b>${b.name}</b><br>${chatReply(b,v)}</div>`;box.scrollTop=box.scrollHeight},450);
+}
+function chatReply(b,v){
+ if(b.name.includes("Mert"))return "Bu görüş biraz iddialı değil mi? :)";
+ if(b.name.includes("Elif"))return "Bunu destekleyen bir veri ya da örnek varsa tartışma daha sağlam ilerler.";
+ if(b.name.includes("Sıla"))return "Farklı düşünüyor olsak da gerekçeni anlamak isterim.";
+ if(b.name.includes("Ahmet"))return "Net bir görüş. Ben bazı noktalarına katılmıyorum.";
+ if(b.name.includes("Zeynep"))return "Karşı tarafın bakış açısını da eklersek daha dengeli olabilir.";
+ return "Bu konu bende daha farklı bir tepki oluşturdu.";
+}
+function switchTab(id){
+ document.querySelectorAll(".tab").forEach(x=>x.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");
+ document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===id));
+ const names={feed:"Akış",chat:"Sohbet",profile:"Kullanıcı Profili",score:"NİYET Skoru",growth:"Gelişim"};document.getElementById("pageTitle").textContent=names[id]
+}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+function closeAnalysis(){document.getElementById("analysisModal").classList.add("hidden")}
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function randomBotActivity(){
+ const p=basePosts[Math.floor(Math.random()*basePosts.length)];
+ const choices=[
+  ["Sıla Demir","Fikri tartışırken kişiden bağımsız kalmak daha sağlıklı olabilir."],
+  ["Mert Kaya","Bu yorum kesin herkesi ikna eder :)"],
+  ["Ahmet Yılmaz","Katılmadığım noktalar var ama gerekçeyi anlıyorum."],
+  ["Elif Aydın","Bunun ölçülebilir tarafını da konuşmak gerekir."]
+ ];
+ if(Math.random()<0.65){
+  const c=choices[Math.floor(Math.random()*choices.length)];p.comments.push(c);if(p.comments.length>6)p.comments.shift();
+  const a=analyzeText(c[1],p.heat);p.heat=Math.round(p.heat*0.82+a.heatImpact*0.18);renderFeed();
+ }
+}
+renderBots();renderFeed();renderProfilePosts();renderScores();renderChat();setupImage();
+setInterval(randomBotActivity,9000);
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+[
+  {
+    "surum": "V10_Luna",
+    "dosya_sayisi": 32,
+    "boyut_byte": 2047979,
+    "index_sha256": "6590c0cb56a45e60b7b2ea5af44979aad6b6ae949a39cbaf1492440e6bc45011"
+  },
+  {
+    "surum": "V11_Anket_Entegre",
+    "dosya_sayisi": 36,
+    "boyut_byte": 2511357,
+    "index_sha256": "8aa0d4ef1f2609703eb8c60dd8b5c836b3c5d62bfb57478f462b615a600a2edc"
+  },
+  {
+    "surum": "V12_3_Teknofest_AnaTema",
+    "dosya_sayisi": 36,
+    "boyut_byte": 2515749,
+    "index_sha256": "60d3af2252e1d82006b2cbf47b3b0dd9421c76f18653fb0a160cf915e13bdf31"
+  },
+  {
+    "surum": "V1_Ilk_Prototip",
+    "dosya_sayisi": 1,
+    "boyut_byte": 32626,
+    "index_sha256": "4bfe02aecd74128ec895a6f588f7173dbe3657b562b0913c07045dc3d6667b69"
+  },
+  {
+    "surum": "V2_Prototip",
+    "dosya_sayisi": 1,
+    "boyut_byte": 52400,
+    "index_sha256": "b4e7e2d791846f6d2018d0c0b3755dbf63cfed07a320a8c6398124e637050f89"
+  },
+  {
+    "surum": "V3_Prototip",
+    "dosya_sayisi": 1,
+    "boyut_byte": 575537,
+    "index_sha256": "d94ba02c669cba30253a395374732ef49fcbb5d485b900636ad6152bc271227f"
+  },
+  {
+    "surum": "V4_Prototip",
+    "dosya_sayisi": 1,
+    "boyut_byte": 585451,
+    "index_sha256": "11908d46f0abe224e673eed2f522520bcd2896f5aa5cf37c4f2df6f68d589005"
+  },
+  {
+    "surum": "V5_Prototip",
+    "dosya_sayisi": 1,
+    "boyut_byte": 591868,
+    "index_sha256": "bdcae984be222f7582ca32ee8bb2cba0263021fda404298091531ff2f8f99869"
+  },
+  {
+    "surum": "V6_1_OpenAI",
+    "dosya_sayisi": 7,
+    "boyut_byte": 605109,
+    "index_sha256": "75c72b42124392dd82fdc2347e7135425252beb6eea553505d487774cf760735"
+  },
+  {
+    "surum": "V7_Luna",
+    "dosya_sayisi": 32,
+    "boyut_byte": 1989675,
+    "index_sha256": "c4b2011ded4d6e0511ed3ffa7df62f688fa55b8fc8c80ff9a1add77e696837c0"
+  },
+  {
+    "surum": "V8_1_Luna",
+    "dosya_sayisi": 31,
+    "boyut_byte": 1989561,
+    "index_sha256": "9a7f718581986b77ae323430cd8b4c6fa57321de61ef095a9c87c6971b6a4293"
+  },
+  {
+    "surum": "V9_Luna",
+    "dosya_sayisi": 32,
+    "boyut_byte": 2015442,
+    "index_sha256": "ef6aa1fd734eabe036b911e0dfc5a7be99f1f5e12f48b1c03a6c62a55ed757d7"
+  }
+]
