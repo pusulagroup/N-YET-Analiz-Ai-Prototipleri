@@ -1,0 +1,112 @@
+{
+  "Saygı": [
+    {
+      "title": "Kişiyi değil fikri eleştir",
+      "video": "videos/sayg-01-kisiyi-degil-fikri-elestir.mp4"
+    },
+    {
+      "title": "Karşı görüşü doğru anlama",
+      "video": "videos/sayg-02-kars-gorusu-dogru-anlama.mp4"
+    },
+    {
+      "title": "Küçümseyici dilden kaçınma",
+      "video": "videos/sayg-03-kucumseyici-dilden-kacnma.mp4"
+    },
+    {
+      "title": "Genelleme tuzağını fark et",
+      "video": "videos/sayg-04-genelleme-tuzagn-fark-et.mp4"
+    },
+    {
+      "title": "Çevrimiçi nezaketin 3 kuralı",
+      "video": "videos/sayg-05-cevrimici-nezaketin-3-kural.mp4"
+    }
+  ],
+  "Yapıcılık": [
+    {
+      "title": "Eleştiriye gerekçe ekle",
+      "video": "videos/yapclk-01-elestiriye-gerekce-ekle.mp4"
+    },
+    {
+      "title": "Çözüm odaklı yanıt",
+      "video": "videos/yapclk-02-cozum-odakl-yant.mp4"
+    },
+    {
+      "title": "Tartışmayı ilerleten soru",
+      "video": "videos/yapclk-03-tartsmay-ilerleten-soru.mp4"
+    },
+    {
+      "title": "Konu dışına çıkmadan itiraz",
+      "video": "videos/yapclk-04-konu-dsna-ckmadan-itiraz.mp4"
+    },
+    {
+      "title": "Bilgi katkısı nasıl yapılır?",
+      "video": "videos/yapclk-05-bilgi-katks-nasl-yaplr.mp4"
+    }
+  ],
+  "Tutarlılık": [
+    {
+      "title": "Görüş değişikliği nasıl açıklanır?",
+      "video": "videos/tutarllk-01-gorus-degisikligi-nasl-acklanr.mp4"
+    },
+    {
+      "title": "İlke ve davranış uyumu",
+      "video": "videos/tutarllk-02-ilke-ve-davrans-uyumu.mp4"
+    },
+    {
+      "title": "Aynı ölçütü iki tarafa uygula",
+      "video": "videos/tutarllk-03-ayn-olcutu-iki-tarafa-uygula.mp4"
+    },
+    {
+      "title": "Çelişkiyi fark et ve açıkla",
+      "video": "videos/tutarllk-04-celiskiyi-fark-et-ve-ackla.mp4"
+    },
+    {
+      "title": "Tutarlı argüman kurma",
+      "video": "videos/tutarllk-05-tutarl-arguman-kurma.mp4"
+    }
+  ],
+  "Gerilim Yönetimi": [
+    {
+      "title": "Provokasyona kapılmadan yanıt",
+      "video": "videos/gerilim-yonetimi-01-provokasyona-kaplmadan-yant.mp4"
+    },
+    {
+      "title": "Tartışma ısısını düşüren dil",
+      "video": "videos/gerilim-yonetimi-02-tartsma-ssn-dusuren-dil.mp4"
+    },
+    {
+      "title": "Kişiselleşmeyi durdur",
+      "video": "videos/gerilim-yonetimi-03-kisisellesmeyi-durdur.mp4"
+    },
+    {
+      "title": "Sertleşmede tonu koru",
+      "video": "videos/gerilim-yonetimi-04-sertlesmede-tonu-koru.mp4"
+    },
+    {
+      "title": "Ne zaman yanıt vermemeli?",
+      "video": "videos/gerilim-yonetimi-05-ne-zaman-yant-vermemeli.mp4"
+    }
+  ],
+  "İletişim Açıklığı": [
+    {
+      "title": "Niyetini açık ifade et",
+      "video": "videos/iletisim-acklg-01-niyetini-ack-ifade-et.mp4"
+    },
+    {
+      "title": "İroninin yanlış anlaşılma riski",
+      "video": "videos/iletisim-acklg-02-ironinin-yanls-anlaslma-riski.mp4"
+    },
+    {
+      "title": "Belirsiz ifadeyi sadeleştir",
+      "video": "videos/iletisim-acklg-03-belirsiz-ifadeyi-sadelestir.mp4"
+    },
+    {
+      "title": "Emoji ve metin uyumu",
+      "video": "videos/iletisim-acklg-04-emoji-ve-metin-uyumu.mp4"
+    },
+    {
+      "title": "Kısa ama açık yazma",
+      "video": "videos/iletisim-acklg-05-ksa-ama-ack-yazma.mp4"
+    }
+  ]
+}

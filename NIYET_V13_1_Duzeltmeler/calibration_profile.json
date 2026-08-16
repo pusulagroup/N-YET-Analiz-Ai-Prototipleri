@@ -1,0 +1,261 @@
+{
+  "profile_name": "NIYET İnsan Algısı Kalibrasyon Katmanı V1",
+  "version": "1.0",
+  "created_date": "2026-08-15",
+  "source": {
+    "messages": 450,
+    "human_annotations": 3600,
+    "readers_per_message": 8,
+    "base_model": "gpt-5.6-luna",
+    "blind_benchmark": true
+  },
+  "training": {
+    "target": "7-sınıflı insan algısı soft-label dağılımı",
+    "author_intent_used_as_training_feature": false,
+    "algorithm": "Ridge multi-output regression + simplex projection",
+    "alpha": 0.01,
+    "features": [
+      "Luna Bilgilendirme Olasılığı",
+      "Luna Eleştiri Olasılığı",
+      "Luna İtiraz Olasılığı",
+      "Luna Mizah Olasılığı",
+      "Luna Tavsiye Olasılığı",
+      "Luna Destek / Övgü Olasılığı",
+      "Luna Soru Olasılığı",
+      "log(Luna Bilgilendirme Olasılığı)",
+      "log(Luna Eleştiri Olasılığı)",
+      "log(Luna İtiraz Olasılığı)",
+      "log(Luna Mizah Olasılığı)",
+      "log(Luna Tavsiye Olasılığı)",
+      "log(Luna Destek / Övgü Olasılığı)",
+      "log(Luna Soru Olasılığı)",
+      "Luna Normalize Entropi"
+    ],
+    "validation": "5-fold stratified cross-validation; strata=human dominant perception",
+    "random_state": 20260815
+  },
+  "decision_layer": {
+    "normal_intent_shift": "calibrated dominant perception differs from author-selected intent",
+    "strong_intent_shift_probability_threshold": 0.355,
+    "strong_threshold_method": "nested CV F1 tuning; fold thresholds 0.35,0.35,0.375,0.35,0.35",
+    "note": "Author-intent labels flagged as possible miscoding must be manually audited in research reporting."
+  },
+  "evaluation_oof": {
+    "raw_luna": {
+      "dominant_accuracy": 0.6476190476190476,
+      "top2_accuracy": 0.8285714285714286,
+      "soft_label_mae": 0.10754834349206349,
+      "brier": 0.03876232995935556,
+      "js_divergence_natural_log": 0.16700142395665565,
+      "uncertainty_correlation": 0.3746693912181919,
+      "intent_shift_f1": 0.647887323943662,
+      "strong_shift_f1_at_0_625": 0.46889952153110054
+    },
+    "calibrated_niyet": {
+      "dominant_accuracy": 0.7642857142857142,
+      "top2_accuracy": 0.9238095238095239,
+      "soft_label_mae": 0.08872141377677938,
+      "brier": 0.022973649847230982,
+      "js_divergence_natural_log": 0.12361893625650995,
+      "uncertainty_correlation": 0.5501146684908134,
+      "intent_shift_f1": 0.7443181818181819,
+      "strong_shift_f1_nested_threshold": 0.6466666666666666
+    }
+  },
+  "data_quality": {
+    "low_context_messages": 20,
+    "author_label_manual_review_candidates": 47,
+    "review_candidates_by_author_intent": {
+      "Bilgilendirme": 10,
+      "Destek / Övgü": 5,
+      "Eleştiri": 9,
+      "Tavsiye": 8,
+      "Mizah": 10,
+      "İtiraz": 4,
+      "Soru": 1
+    },
+    "policy": "Perception calibration keeps these messages because human soft-labels remain useful; author-intent-based shift claims are separately quality-screened."
+  },
+  "coefficients": {
+    "output_categories": [
+      "Bilgilendirme",
+      "Eleştiri",
+      "İtiraz",
+      "Mizah",
+      "Tavsiye",
+      "Destek / Övgü",
+      "Soru"
+    ],
+    "intercepts": [
+      0.2133054539483073,
+      0.21108759509719466,
+      0.014414664395929817,
+      0.1615272048591886,
+      0.1206298938849768,
+      0.244724626361629,
+      0.034310561453195706
+    ],
+    "matrix_output_by_feature": [
+      [
+        0.772037504511898,
+        -0.19336060602683183,
+        -0.08783233155253,
+        0.02396191148873923,
+        -0.3478708361412586,
+        0.009370782361062093,
+        -0.17630933256766576,
+        -0.0016294970993200968,
+        -0.010406228175538698,
+        -0.0020104359280939768,
+        -0.006598056222995772,
+        0.006799971601347529,
+        0.01528801441792223,
+        0.012654459977321801,
+        0.3850782751201717
+      ],
+      [
+        -0.10079614115608905,
+        0.8448010137587475,
+        -0.22006237921082786,
+        -0.006774261639003189,
+        -0.20502818179879403,
+        -0.16646923922674525,
+        -0.1457009386313999,
+        -0.007610516378530686,
+        -0.011723440577221274,
+        0.00985371573879217,
+        0.0047534229825102955,
+        0.003411097546674785,
+        0.004586497780992861,
+        -0.003344540284837382,
+        -0.1245200525985774
+      ],
+      [
+        -0.08591164729623692,
+        -0.11389763017288287,
+        0.43362198438123334,
+        -0.06126445248605489,
+        -0.05588586960432999,
+        -0.03801829496657918,
+        -0.07867478705700157,
+        0.001420296773214152,
+        0.00539015448851029,
+        -0.004099131965415752,
+        1.553445725994669e-05,
+        -0.005025930873010179,
+        -0.006617636151220651,
+        0.0015491354265046672,
+        0.06005142099768568
+      ],
+      [
+        -0.055259482963353965,
+        -0.10931175502357363,
+        0.02117602320773893,
+        0.40894441098058115,
+        -0.10985260547414505,
+        -0.062357266019296385,
+        -0.09333112945756615,
+        -0.0012327052833529732,
+        3.382474916966609e-05,
+        0.0007507509947712555,
+        0.0035402885137674938,
+        0.0028629853935197144,
+        -0.0003420072702668867,
+        0.003358637447131758,
+        -0.05135997382991648
+      ],
+      [
+        -0.19395799524413423,
+        -0.15232088865649923,
+        -0.04925535760782387,
+        -0.1399900392272956,
+        0.8490214945954669,
+        -0.15074164674650642,
+        -0.16270323948052587,
+        0.0028410669790590298,
+        0.0016126676701487665,
+        -0.002368062187159343,
+        -0.0012257702662135327,
+        -0.0010001878166625428,
+        -0.0033818442719235255,
+        -0.003438397007942475,
+        0.016733270717319424
+      ],
+      [
+        -0.11450576915463004,
+        -0.11899374909324875,
+        0.060268377554042615,
+        -0.1454022824109397,
+        -0.08879222563152603,
+        0.4902442614527177,
+        -0.08282081873406658,
+        0.0027579163247334485,
+        0.007910513051218319,
+        -0.002677902909799954,
+        0.007607447194088259,
+        0.000894333703130113,
+        -0.002082430759824484,
+        -0.004506741540222455,
+        -0.2641788031280903
+      ],
+      [
+        -0.22160646869787948,
+        -0.1569163847861348,
+        -0.1579163167722577,
+        -0.07947528670644687,
+        -0.041591775945841424,
+        -0.08202859685507415,
+        0.7395402459277969,
+        0.003453438684197049,
+        0.007182508793712011,
+        0.0005510662569062032,
+        -0.008092866658417063,
+        -0.007942269554998906,
+        -0.007450593745680087,
+        -0.006272554017955741,
+        -0.02180413727859059
+      ]
+    ]
+  },
+  "runtime": {
+    "status": "human_calibrated",
+    "human_labels": 3600,
+    "target_human_labels": 3600,
+    "unique_messages": 450,
+    "readers_per_message": 8,
+    "model_independent": true,
+    "uncertainty_high": 65,
+    "strong_shift_threshold": 0.355,
+    "clean_research": {
+      "manual_review_candidates": 47,
+      "manual_reliable": 3,
+      "manual_suspicious": 25,
+      "manual_ambiguous": 19,
+      "clean_messages": 406,
+      "strict_clean_messages": 388,
+      "clean_dominant_shift_rate": 0.2808,
+      "strict_clean_dominant_shift_rate": 0.2706,
+      "strict_clean_strong_shift_rate": 0.1907
+    },
+    "human_agreement_reference": {
+      "pairwise_agreement": 0.5954,
+      "leave_one_reader_vs_other7_dominant": 0.71,
+      "full_group_dominant_reader_match": 0.7383
+    },
+    "emoji_humor_finding": {
+      "conclusion": "Emoji kullanımı tek başına mizahın doğru anlaşılmasını anlamlı biçimde artırmadı; açık mizah emojilerinde ham Luna insanlara göre daha yüksek mizah güveni gösterebildi.",
+      "strict_human_humor_share_no_emoji": 0.3333,
+      "strict_human_humor_share_with_emoji": 0.315,
+      "strict_explicit_humor_emoji_human_share": 0.3068,
+      "strict_explicit_humor_emoji_raw_luna_share": 0.4936,
+      "strict_explicit_humor_emoji_calibrated_share": 0.2624
+    },
+    "uncertainty_method_v13_1": "top-two proximity + upper-tail entropy + weak-dominant penalty"
+  },
+  "status": "human_calibrated",
+  "human_labels": 3600,
+  "target_human_labels": 3600,
+  "unique_messages": 450,
+  "uncertainty_high": 65,
+  "model_independent": true
+}
