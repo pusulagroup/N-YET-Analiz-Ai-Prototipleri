@@ -1,0 +1,19 @@
+# API keys / local secrets
+.env
+.env.*
+*.key
+secrets.*
+
+# Python runtime
+__pycache__/
+*.py[cod]
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
