@@ -1,0 +1,387 @@
+{
+  "Saygı": [
+    {
+      "title": "Kişiyi değil fikri eleştir",
+      "video": "videos/sayg-01-kisiyi-degil-fikri-elestir.mp4",
+      "quiz": {
+        "question": "Bir fikre katılmıyorsun. Hangisi kişiyi değil fikri eleştirir?",
+        "options": [
+          "Sen zaten hiçbir şeyi doğru düşünemiyorsun.",
+          "Bu fikrin gerekçesi bana yetersiz geliyor; şu kısmı yeniden açıklayabilir misin?",
+          "Bunu yazan biriyle konuşmaya gerek yok."
+        ],
+        "correct": 1,
+        "explanation": "Eleştiri kişinin değerine değil, savunulan fikir veya gerekçeye yönelmelidir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Karşı görüşü doğru anlama",
+      "video": "videos/sayg-02-kars-gorusu-dogru-anlama.mp4",
+      "quiz": {
+        "question": "Karşı görüşü doğru anladığını göstermenin en iyi ilk adımı hangisidir?",
+        "options": [
+          "Duyduğun görüşü kısa biçimde özetleyip doğru anlayıp anlamadığını sormak",
+          "Karşı taraf bitirmeden kendi cevabını hazırlamak",
+          "Katılmadığın noktayı hemen reddetmek"
+        ],
+        "correct": 0,
+        "explanation": "Önce görüşü doğru anladığını kontrol etmek, yanlış varsayımları ve gereksiz gerilimi azaltır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Küçümseyici dilden kaçınma",
+      "video": "videos/sayg-03-kucumseyici-dilden-kacnma.mp4",
+      "quiz": {
+        "question": "Hangisi küçümseyici dil yerine daha saygılı bir eleştiridir?",
+        "options": [
+          "Bunu anlamamak gerçekten komik.",
+          "Senin seviyende biri için normal.",
+          "Bu yaklaşımın şu kısmına katılmıyorum; gerekçesi bana zayıf geliyor."
+        ],
+        "correct": 2,
+        "explanation": "Saygılı eleştiri, kişiyi küçültmeden somut fikir veya gerekçeyi tartışır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Genelleme tuzağını fark et",
+      "video": "videos/sayg-04-genelleme-tuzagn-fark-et.mp4",
+      "quiz": {
+        "question": "Hangisi genelleme tuzağından kaçınır?",
+        "options": [
+          "Siz hep böylesiniz.",
+          "Bu örnekte kullanılan gerekçeyi ikna edici bulmadım.",
+          "Kimse bu konuda düzgün düşünmüyor."
+        ],
+        "correct": 1,
+        "explanation": "Tek bir davranış veya örnek üzerinden herkese yayılan genellemeler yerine somut durumu belirtmek daha sağlıklıdır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Çevrimiçi nezaketin 3 kuralı",
+      "video": "videos/sayg-05-cevrimici-nezaketin-3-kural.mp4",
+      "quiz": {
+        "question": "Çevrimiçi bir anlaşmazlıkta hangi yanıt dijital nezakete daha uygundur?",
+        "options": [
+          "Katılmıyorum; neden böyle düşündüğünü açıklarsan değerlendirmek isterim.",
+          "Boş yapma.",
+          "Cevap vermeye bile değmezsin."
+        ],
+        "correct": 0,
+        "explanation": "Nezaket, görüş ayrılığını ortadan kaldırmaz; kişiye saldırmadan iletişimi sürdürmeyi sağlar."
+      },
+      "duration_seconds": 10
+    }
+  ],
+  "Yapıcılık": [
+    {
+      "title": "Eleştiriye gerekçe ekle",
+      "video": "videos/yapclk-01-elestiriye-gerekce-ekle.mp4",
+      "quiz": {
+        "question": "Bir eleştiriyi daha yapıcı yapan temel unsur hangisidir?",
+        "options": [
+          "Sadece 'kötü olmuş' demek",
+          "Daha sert kelimeler kullanmak",
+          "Neden katılmadığını veya hangi noktayı sorunlu gördüğünü açıklamak"
+        ],
+        "correct": 2,
+        "explanation": "Gerekçe, eleştirinin anlaşılabilir ve tartışılabilir olmasını sağlar."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Çözüm odaklı yanıt",
+      "video": "videos/yapclk-02-cozum-odakl-yant.mp4",
+      "quiz": {
+        "question": "Hangisi çözüm odaklı bir yanıttır?",
+        "options": [
+          "Bu sorun için bildirimleri daha sade gruplandırmayı deneyebiliriz.",
+          "Bu sistem berbat.",
+          "Böyle olacağı belliydi."
+        ],
+        "correct": 0,
+        "explanation": "Sorunu belirtmenin yanında uygulanabilir bir alternatif önermek tartışmayı ileri taşır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Tartışmayı ilerleten soru",
+      "video": "videos/yapclk-03-tartsmay-ilerleten-soru.mp4",
+      "quiz": {
+        "question": "Hangisi tartışmayı ilerleten bir sorudur?",
+        "options": [
+          "Sen gerçekten buna inanıyor musun?",
+          "Bu sonuca ulaşırken hangi veriyi temel aldın?",
+          "Bunu nasıl düşünebildin?"
+        ],
+        "correct": 1,
+        "explanation": "İlerleten soru, kişiyi sıkıştırmak yerine gerekçe, veri veya çözüm hakkında yeni bilgi üretir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Konu dışına çıkmadan itiraz",
+      "video": "videos/yapclk-04-konu-dsna-ckmadan-itiraz.mp4",
+      "quiz": {
+        "question": "Konu dışına çıkmadan itiraz etmek için hangisi daha uygundur?",
+        "options": [
+          "Zaten sen geçen hafta da başka konuda yanılmıştın.",
+          "Profil fotoğrafından belli.",
+          "Bu noktaya katılmıyorum; çünkü verdiğin örnek sonucu tek başına göstermiyor."
+        ],
+        "correct": 2,
+        "explanation": "İtiraz, tartışılan iddia ve gerekçede kalırsa daha yapıcı olur."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Bilgi katkısı nasıl yapılır?",
+      "video": "videos/yapclk-05-bilgi-katks-nasl-yaplr.mp4",
+      "quiz": {
+        "question": "Bir tartışmaya bilgi katkısı yapmanın en iyi örneği hangisidir?",
+        "options": [
+          "Herkes böyle biliyor.",
+          "Geçen ay yayımlanan raporda bu oran %42 olarak verilmiş; istersen kaynağı paylaşabilirim.",
+          "Bence öyle işte."
+        ],
+        "correct": 1,
+        "explanation": "Kontrol edilebilir bilgi, veri veya kaynak tartışmanın bilgi değerini artırır."
+      },
+      "duration_seconds": 10
+    }
+  ],
+  "Tutarlılık": [
+    {
+      "title": "Görüş değişikliği nasıl açıklanır?",
+      "video": "videos/tutarllk-01-gorus-degisikligi-nasl-acklanr.mp4",
+      "quiz": {
+        "question": "Görüşünü değiştirdiğinde en tutarlı yaklaşım hangisidir?",
+        "options": [
+          "Yeni veri nedeniyle fikrimin şu kısmını değiştirdim demek",
+          "Hiç değişmemiş gibi davranmak",
+          "Eski söylediklerini silip konuyu kapatmak"
+        ],
+        "correct": 0,
+        "explanation": "Tutarlılık fikir değiştirmemek değildir; değişimin gerekçesini açıkça gösterebilmektir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "İlke ve davranış uyumu",
+      "video": "videos/tutarllk-02-ilke-ve-davrans-uyumu.mp4",
+      "quiz": {
+        "question": "'Kişisel saldırı doğru değil' diyen biri için hangi davranış ilke-davranış uyumuna uygundur?",
+        "options": [
+          "Sadece kendi görüşüne saldırılınca bu ilkeyi savunmak",
+          "Karşı taraf sertleşince aynı şekilde saldırmak",
+          "Katılmadığı kişilere de kişisel saldırı yapmamak"
+        ],
+        "correct": 2,
+        "explanation": "İletişim ilkesi, yalnızca işimize geldiğinde değil farklı görüşlerde de uygulanmalıdır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Aynı ölçütü iki tarafa uygula",
+      "video": "videos/tutarllk-03-ayn-olcutu-iki-tarafa-uygula.mp4",
+      "quiz": {
+        "question": "Aynı ölçütü iki tarafa uygulamak ne demektir?",
+        "options": [
+          "Kendi desteklediğin görüşün hatasını görmezden gelmek",
+          "Benzer davranışı kimin yaptığına bakmadan aynı standartla değerlendirmek",
+          "Her iki görüşü de doğru kabul etmek"
+        ],
+        "correct": 1,
+        "explanation": "Tutarlı ölçüt, kişi veya taraf değiştiğinde değerlendirme standardının keyfî biçimde değişmemesidir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Çelişkiyi fark et ve açıkla",
+      "video": "videos/tutarllk-04-celiskiyi-fark-et-ve-ackla.mp4",
+      "quiz": {
+        "question": "Önceki sözünle çeliştiğini fark ettiğinde en sağlıklı yaklaşım hangisidir?",
+        "options": [
+          "Çelişkiyi kabul edip neden değiştiğini veya hangi koşulun farklı olduğunu açıklamak",
+          "Çelişkiyi yok saymak",
+          "Karşı tarafı suçlamak"
+        ],
+        "correct": 0,
+        "explanation": "Çelişkiyi açıklamak güvenilirliği azaltmaz; gerekçelendirilmiş değişim tutarlılığın parçasıdır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Tutarlı argüman kurma",
+      "video": "videos/tutarllk-05-tutarl-arguman-kurma.mp4",
+      "quiz": {
+        "question": "Tutarlı bir argümanın temel özelliği hangisidir?",
+        "options": [
+          "Çok uzun yazılması",
+          "Kesin ve sert ifadeler kullanılması",
+          "Sonuç ile verilen gerekçelerin birbirini desteklemesi"
+        ],
+        "correct": 2,
+        "explanation": "Tutarlı argümanda iddia, gerekçe ve örnekler birbirleriyle çelişmeden aynı sonucu destekler."
+      },
+      "duration_seconds": 10
+    }
+  ],
+  "Gerilim Yönetimi": [
+    {
+      "title": "Provokasyona kapılmadan yanıt",
+      "video": "videos/gerilim-yonetimi-01-provokasyona-kaplmadan-yant.mp4",
+      "quiz": {
+        "question": "Biri sana 'hiçbir şey bilmiyorsun' dedi. Provokasyona kapılmadan hangi yanıt daha uygundur?",
+        "options": [
+          "Sen de hiçbir şey bilmiyorsun.",
+          "Kişisel kısmı bırakıp konuya dönelim; hangi noktaya katılmadığını söylersen cevaplayabilirim.",
+          "Kes sesini."
+        ],
+        "correct": 1,
+        "explanation": "Provokasyona direnmek, saldırıyı taklit etmek yerine tartışmayı yeniden konuya taşımaktır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Tartışma ısısını düşüren dil",
+      "video": "videos/gerilim-yonetimi-02-tartsma-ssn-dusuren-dil.mp4",
+      "quiz": {
+        "question": "Hangisi tartışma ısısını düşürmeye daha çok yardımcı olur?",
+        "options": [
+          "Sen başlattın.",
+          "Aynen devam et bakalım.",
+          "Sanırım birbirimizi farklı anlamış olabiliriz; şu noktayı netleştireyim."
+        ],
+        "correct": 2,
+        "explanation": "Yumuşatma, yanlış anlaşılmayı kabul etme ve netleştirme gerilimi kontrollü biçimde azaltabilir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Kişiselleşmeyi durdur",
+      "video": "videos/gerilim-yonetimi-03-kisisellesmeyi-durdur.mp4",
+      "quiz": {
+        "question": "Tartışma kişiselleşmeye başladığında ne yapmak daha doğrudur?",
+        "options": [
+          "Konuyu kişinin özelliklerinden ayırıp iddia veya davranışa dönmek",
+          "Karşı tarafın karakterini tartışmak",
+          "Eski hatalarını sıralamak"
+        ],
+        "correct": 0,
+        "explanation": "Kişiselleşmeyi durdurmanın yolu odağı kişiden tartışılan fikir veya davranışa geri çevirmektir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Sertleşmede tonu koru",
+      "video": "videos/gerilim-yonetimi-04-sertlesmede-tonu-koru.mp4",
+      "quiz": {
+        "question": "Karşı tarafın tonu sertleştiğinde kendi tonunu korumak ne anlama gelir?",
+        "options": [
+          "Aynı sertlikte cevap vermek",
+          "Mesajını açık ve kararlı tutarken hakaret ve küçümsemeye geçmemek",
+          "Daha yüksek sesli ve kesin yazmak"
+        ],
+        "correct": 1,
+        "explanation": "Tonu korumak pasif olmak değil; anlaşmazlık sürerken iletişim standardını bozmamaktır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Ne zaman yanıt vermemeli?",
+      "video": "videos/gerilim-yonetimi-05-ne-zaman-yant-vermemeli.mp4",
+      "quiz": {
+        "question": "Hangi durumda yanıtı biraz ertelemek daha sağlıklı olabilir?",
+        "options": [
+          "Karşı taraf soru sorduğunda her zaman",
+          "Her görüş ayrılığında",
+          "Çok öfkeli olduğunda ve anlık olarak saldırgan cevap yazma ihtimalin yükseldiğinde"
+        ],
+        "correct": 2,
+        "explanation": "Yoğun öfke anında kısa bir gecikme, dürtüsel ve gerilimi artıran yanıt riskini azaltabilir."
+      },
+      "duration_seconds": 10
+    }
+  ],
+  "İletişim Açıklığı": [
+    {
+      "title": "Niyetini açık ifade et",
+      "video": "videos/iletisim-acklg-01-niyetini-ack-ifade-et.mp4",
+      "quiz": {
+        "question": "Niyeti açık ifade etmeye en iyi örnek hangisidir?",
+        "options": [
+          "Bunu eleştiri olarak söylüyorum: yöntemin veri kısmı bana yetersiz geliyor.",
+          "Sen anladın işte.",
+          "Neyse boşver."
+        ],
+        "correct": 0,
+        "explanation": "Niyeti ve eleştirilen noktayı açıklaştırmak, okuyucunun mesajı farklı yorumlama riskini azaltır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "İroninin yanlış anlaşılma riski",
+      "video": "videos/iletisim-acklg-02-ironinin-yanls-anlaslma-riski.mp4",
+      "quiz": {
+        "question": "İroninin yanlış anlaşılma riski ne zaman daha yüksektir?",
+        "options": [
+          "Bağlam ve ilişki ironiyi açıkça desteklediğinde",
+          "Kısa bir metinde ton işaretleri belirsiz ve okuyucu bağlamı bilmiyorsa",
+          "İfade doğrudan ve literal olduğunda"
+        ],
+        "correct": 1,
+        "explanation": "İroni, ortak bağlam zayıf olduğunda destek, mizah veya eleştiri arasında kolayca farklı algılanabilir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Belirsiz ifadeyi sadeleştir",
+      "video": "videos/iletisim-acklg-03-belirsiz-ifadeyi-sadelestir.mp4",
+      "quiz": {
+        "question": "'Belki şey biraz farklı olabilir gibi' ifadesini daha açık nasıl yazarsın?",
+        "options": [
+          "Hani şey var ya, o.",
+          "Anlayan anladı.",
+          "Bu önerinin ikinci kısmını değiştirmeyi öneriyorum."
+        ],
+        "correct": 2,
+        "explanation": "Belirsiz zamir ve dolgu ifadeleri yerine hangi noktanın kastedildiğini doğrudan söylemek açıklığı artırır."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Emoji ve metin uyumu",
+      "video": "videos/iletisim-acklg-04-emoji-ve-metin-uyumu.mp4",
+      "quiz": {
+        "question": "Emoji-metin uyumuna en iyi örnek hangisidir?",
+        "options": [
+          "'Tebrikler, harika iş çıkardın 👏' gibi metinle uyumlu bir emoji kullanmak",
+          "Ciddi bir taziye mesajının sonuna 😂 eklemek",
+          "Her mesajın sonuna aynı emojiyi eklemek"
+        ],
+        "correct": 0,
+        "explanation": "Emoji, metnin niyetiyle uyumlu olduğunda tonu destekler; ters düştüğünde algıyı karıştırabilir."
+      },
+      "duration_seconds": 10
+    },
+    {
+      "title": "Kısa ama açık yazma",
+      "video": "videos/iletisim-acklg-05-ksa-ama-ack-yazma.mp4",
+      "quiz": {
+        "question": "Kısa ama açık yazmaya en iyi örnek hangisidir?",
+        "options": [
+          "Olmadı.",
+          "Bu öneriye katılmıyorum; maliyet kısmı açıklanmamış.",
+          "Şey yani bence biraz öyle değil gibi aslında."
+        ],
+        "correct": 1,
+        "explanation": "Kısalık tek başına yeterli değildir; temel görüş ve gerekçe anlaşılır kalmalıdır."
+      },
+      "duration_seconds": 10
+    }
+  ]
+}
