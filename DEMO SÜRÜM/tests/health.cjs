@@ -1,0 +1,22 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const html=fs.readFileSync(require('path').join(__dirname,'..','index.html'),'utf8');
+const section=(a,b,last=false)=>{let start=last?html.lastIndexOf(a):html.indexOf(a);return html.slice(start,html.indexOf(b,start));};
+const c={console,clamp:n=>Math.max(0,Math.min(100,n)),chatSelfConduct:{x:100},chatOtherConduct:{x:100},chatHealth:{x:100},chatRiskEvents:{x:[]},chatEngaged:{},chatUserDamage:{},chatBotDamage:{},safetyContinueAt:{},chats:{x:[]},applyChatBehaviorToScoreV132:()=>{},maybeReportChat:()=>{},renderRoom:()=>{},renderChats:()=>{},renderV10Panels:()=>{},renderScores:()=>{}};
+vm.createContext(c);vm.runInContext(section('function chatTurnHealthTargetV10','function maybeReportChat')+section('function chatHealthBadgeV10','function shadowBadgeHTMLV14'),c);
+c.chats.x.push({from:'me',text:'ilk',healthStatus:'pending'});
+let user=c.updateChatHealth('x',{has_dismissive_language:true,has_contempt:true,escalates_tension:true},'me');
+assert(user.next<100);assert.equal(c.chats.x[0].healthEvent.delta,user.next-user.old);
+c.chats.x.push({from:'bot',text:'sert yanıt'});
+let bot=c.updateChatHealth('x',{has_dismissive_language:true,has_contempt:true,escalates_tension:true},'bot');
+assert(bot.next<bot.old);assert.equal(c.chats.x[1].healthEvent.old,user.next);assert.equal(c.chats.x[0].healthEvent,user);
+assert(c.chatHealthBadgeV10(c.chats.x[1]).includes(`${bot.old} → ${bot.next}`));
+assert(c.chatHealthBadgeV10({from:'me',healthStatus:'failed'}).includes('hesaplanamadı'));
+assert(c.chatHealthBadgeV10({from:'me',healthStatus:'pending'}).includes('hesaplanıyor'));
+assert(c.chatHealthBadgeV10({from:'bot',text:'eski'}).includes('kaydedilmemiş'));
+assert.equal(c.chatHealthBadgeV10({from:'bot',pending:true}),'');
+assert(c.chatHealthBadgeV10({from:'bot',healthEvent:{old:55,next:55}}).includes('· 0'));
+assert(c.chatHealthBadgeV10({from:'bot',healthEvent:{old:55,next:57}}).includes('· +2'));
+const ids=[2201,2202,2203,2101,2102,2103,2,4,8],posts=ids.map(id=>({id,comments:[{owner:'existing',text:'korunacak'}]}));
+let seed={findPost:id=>posts.find(p=>p.id===id),heatDeltaFromAnalysis:()=>15,applyHeatEvent:(p,d)=>{let before=p.heatCurrent;p.heatCurrent+=d;return {before,after:p.heatCurrent,delta:d}}};vm.createContext(seed);vm.runInContext(section('function seedTestCommentsV5','function seedConversationsV6'),seed);seed.seedTestCommentsV5();seed.seedTestCommentsV5();
+for(const p of posts){assert.equal(p.comments.length,3);assert.equal(p.comments[0].text,'korunacak');assert.deepEqual(Array.from(p.comments.slice(1),x=>x.owner),['tolga','berk']);assert(p.heatCurrent>10);}
+console.log('V10: user/bot health attribution, score continuity, zero/positive/negative badges, pending/error/legacy states and idempotent seeds on 9 posts passed.');
